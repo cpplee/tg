@@ -1,0 +1,74 @@
+	<include file="./Public/tpl/header.html"/>
+	<!-- 载入公共头部文件-->
+	<link href="__PUBLIC__/css/reg.css" type="text/css" rel="stylesheet" >
+
+	<script src="__PUBLIC__/js/regCheck.js"></script>
+	<script>
+
+		function changeCode(){
+//            var src1='{|U:'Member/Reg/showCode'}';
+//		alert(123);
+//		    alert(src1);
+
+		         var src = $('#showCode').attr('src');
+			src = src+'/mt/'+Math.random();
+			$('#showCode').attr('src',src);
+		}
+
+
+		var __JSCONTROL__='__CONTROLLER__';
+		//alert(__JSCONTROL__);
+
+	</script>
+	<div id="regBox">
+		<div class='header'>
+			已有本站账号?<a href="">登录</a>
+		</div>
+		<div class='form'>
+		<form action="{|U:'Member/Reg/addUserInfo'}" method="post" id="regForm">
+			<dl class='focus'>
+				<dt>邮箱</dt>
+				<dd class='text'><input class='must' type="text"  ajax=1 name="email" /></dd>
+				<dd class='prompt'>用于登录和找回密码，不会公开</dd>
+			</dl>
+			<dl>
+				<dt>用户名</dt>
+				<dd class='text'><input class='must' type="text" ajax=1 name="username"  /></dd>
+				<dd class='prompt'></dd>
+			</dl>
+			<dl>
+				<dt>创建密码</dt>
+				<dd class='text'><input class='must' id="password" type="password" name="password"/></dd>
+				<dd class='prompt'></dd>
+			</dl>
+			<dl>
+				<dt>确认密码</dt>
+				<dd class='text'><input class='must' type="password" name="password_d"/></dd>
+				<dd class='prompt'></dd>
+			</dl>
+			<dl>
+				<dt>所在城市</dt>
+				<dd class='area'>
+					<select id="s_province" name="s_province"></select>
+					<select id="s_city" name="s_city" ></select>
+					<select id="s_county" name="s_county"></select>
+					<script type="text/javascript" src="__ROOT__/classLibs/area/area.js"></script>
+					<script type="text/javascript">_init_area();</script>
+				</dd>
+				<dd class='prompt'></dd>
+			</dl>
+			<dl>
+				<dt>验证码</dt>
+				<dd class='text code' style="width:200px;"><input ajax=1 class='must' type="text"  name="code"/>
+					<img id="showCode" onclick="changeCode();" style="float:left;margin: 0px 10px; width:80px; height:28px;" src="{|U:'Member/Reg/showCode'}"></dd>
+				<dd class='prompt'></dd>
+			</dl>
+			<dl>
+				<dt></dt>
+				<dd class='submit'><input type="submit" value="注册"></dd>
+			</dl>
+		</form>
+		</div>
+	</div>
+</body>
+</html>
